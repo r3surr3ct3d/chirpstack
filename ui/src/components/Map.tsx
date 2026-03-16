@@ -6,7 +6,7 @@ import L from "leaflet";
 import "leaflet.awesome-markers";
 import type { MarkerProps as LMarkerProps } from "react-leaflet";
 import { useMap } from "react-leaflet";
-import { MapContainer, Marker as LMarker, TileLayer } from "react-leaflet";
+import { MapContainer, Marker as LMarker, TileLayer, AttributionControl } from "react-leaflet";
 
 import InternalStore from "../stores/InternalStore";
 
@@ -73,7 +73,10 @@ function Map(props: PropsWithChildren<IProps>) {
       zoom={13}
       scrollWheelZoom={false}
       style={style}
+      attributionControl={false}
     >
+      <AttributionControl prefix={false} />
+
       <TileLayer attribution={attribution} url={tileserver} />
       {props.children}
       <MapControl bounds={props.bounds} boundsOptions={props.boundsOptions} center={props.center} />
